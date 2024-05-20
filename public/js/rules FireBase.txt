@@ -1,0 +1,204 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
+
+-------------------
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isUserAzit1ls3YPW7OwfqsyUN1ePrwzl1() {
+      return request.auth.uid == 'Azit1ls3YPW7OwfqsyUN1ePrwzl1';
+    }
+
+    // Cho phép tất cả người dùng đọc tài liệu
+    match /blogs/{blogId} {
+      allow read: if true;
+      allow create, update, delete: if isSignedIn() && isUserAzit1ls3YPW7OwfqsyUN1ePrwzl1();
+    }
+  }
+}
+
+-------------------
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isUserAzit1ls3YPW7OwfqsyUN1ePrwzl1() {
+      return request.auth.uid == 'Azit1ls3YPW7OwfqsyUN1ePrwzl1';
+    }
+
+    // Cho phép người dùng xem, sửa và xóa tất cả bài viết nếu là người dùng cụ thể
+    match /blogs/{blogId} {
+      allow read, update, delete: if isSignedIn() && isUserAzit1ls3YPW7OwfqsyUN1ePrwzl1();
+    }
+
+    // Cho phép tất cả người dùng cập nhật bài viết
+    match /blogs/{blogId} {
+      allow create: if isSignedIn();
+    }
+
+  }
+}
+
+Cập nhật quyền xóa tất cả bài viết của tất cả các tác giả (UID) khác
+-------------------
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read: if true; // Cho phép đọc dữ liệu cho tất cả người dùng
+
+      allow create: if request.auth != null && request.auth.uid == "OwN6URUffkW6gKwG0N5NLEUE62O2";
+      // Kiểm tra User UID và chỉ cho phép tạo dữ liệu nếu User UID trùng khớp với "OwN6URUffkW6gKwG0N5NLEUE62O2"
+      allow update, delete: if request.auth != null && request.auth.uid == "OwN6URUffkW6gKwG0N5NLEUE62O2";
+    }
+  }
+}
+
+---------------------
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /blogs/{blogId} {
+      allow read: if request.auth != null;
+      allow create, update, delete: if request.auth != null && request.auth.uid == resource.data.author_id;
+    }
+  }
+}
+
+==========================================
+
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Cho phép đọc tất cả tài liệu
+    match /{document=**} {
+      allow read: if true;
+      // Kiểm tra User ID và cho phép xóa và sửa tài liệu nếu User ID là "6jNvlB6bEwfEC6BBKdrlZh48AMk1"
+      allow update, delete: if request.auth != null &&
+        (request.auth.uid == "6jNvlB6bEwfEC6BBKdrlZh48AMk1" ||
+        request.auth.uid == "XjZRGsFi7qceFwUcqppJ5xdu59H2");
+    }
+  }
+}
+
+---------------------------
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Cho phép đọc tài liệu cho tất cả người dùng
+    match /{document=**} {
+      allow read: if true;
+
+      // Kiểm tra User ID và cho phép ghi dữ liệu nếu User ID là "6jNvlB6bEwfEC6BBKdrlZh48AMk1"
+      // hoặc nếu User ID là "XjZRGsFi7qceFwUcqppJ5xdu59H2"
+      allow create: if request.auth != null;
+      allow update, delete: if request.auth.uid == "6jNvlB6bEwfEC6BBKdrlZh48AMk1"
+    }
+  }
+}
+
+------------------
+
+var uiConfig = {
+    callbacks: {
+      signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+        // Xử lý khi đăng nhập thành công, ví dụ, chuyển hướng hoặc hiển thị thông báo.
+        return true;
+      },
+      uiShown: function() {
+        // The widget is rendered.
+        // Hide the loader.
+        document.getElementById('loader').style.display = 'none';
+      }
+    },
+    // Sử dụng popup cho quá trình đăng nhập thay vì chuyển hướng mặc định.
+    signInFlow: 'popup',
+    signInSuccessUrl: '<url-to-redirect-to-on-success>',
+    signInOptions: [
+      {
+        provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        // Loại bỏ tùy chọn requireDisplayName
+        requireDisplayName: false
+      }
+    ],
+    // Đường dẫn Điều khoản sử dụng.
+    tosUrl: '<your-tos-url>',
+    // Đường dẫn Chính sách bảo mật.
+    privacyPolicyUrl: '<your-privacy-policy-url>'
+  };
+  
+  // Phương thức start sẽ đợi cho đến khi DOM được tải xong.
+  ui.start('#firebaseui-auth-container', uiConfig);
+
+==================
+var uiConfig = {
+    callbacks: {
+      signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+        // Xử lý khi đăng nhập thành công, ví dụ, chuyển hướng hoặc hiển thị thông báo.
+        return true;
+      },
+      uiShown: function() {
+        // The widget is rendered.
+        // Hide the loader.
+        document.getElementById('loader').style.display = 'none';
+      }
+    },
+    // Sử dụng popup cho quá trình đăng nhập thay vì chuyển hướng mặc định.
+    signInFlow: 'popup',
+    signInSuccessUrl: '<url-to-redirect-to-on-success>',
+    signInOptions: [
+        {
+          provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          signInMethod: "password", // Đặt phương thức đăng nhập thành "password"
+          requireDisplayName: false
+        }
+      ],
+      
+    // Đường dẫn Điều khoản sử dụng.
+    tosUrl: '<your-tos-url>',
+    // Đường dẫn Chính sách bảo mật.
+    privacyPolicyUrl: '<your-privacy-policy-url>'
+};
+
+// Phương thức start sẽ đợi cho đến khi DOM được tải xong.
+ui.start('#firebaseui-auth-container', uiConfig);
+
+===============
+
+/* Đảm bảo footer luôn ở dưới cùng của trang */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999; /* Đảm bảo footer hiển thị trên tất cả các phần khác */
+}
+
+----------------------
+// Hàm xóa một blog
+function deleteBlog(id) {
+    db.collection("blogs").doc(id).delete()
+        .then(() => location.reload())
+        .catch((error) => console.log("Error deleting the blog", error));
+}
+
+https://www.youtube.com/watch?v=Ez7e99RS_jw
+triển khai web lên hosting firebase

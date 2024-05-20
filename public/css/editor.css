@@ -1,0 +1,142 @@
+/* CSS cho phần banner (phần đầu trang) */
+.banner {
+    width: 100%; /* Chiều rộng 100% để nó trải dài toàn bộ chiều rộng của phần header */
+    height: 600px; /* Chiều cao của banner là 600px */
+    position: relative; /* Vị trí tương đối cho các phần tử con */
+    background: #e7e7e7; /* Màu nền của banner */
+    background-size: cover; /* Kích thước nền ảnh được căn chỉnh để cover toàn bộ phần banner */
+    background-position: center; /* Đặt vị trí của nền ảnh ở giữa banner */
+}
+
+/* CSS cho nút upload trong banner */
+.banner-upload-btn {
+    position: absolute; /* Vị trí tuyệt đối để nó nằm trên banner */
+    bottom: 20px; /* Khoảng cách 20px từ bottom của banner */
+    right: 20px; /* Khoảng cách 20px từ right của banner */
+    width: 40px; /* Chiều rộng là 40px */
+    height: 40px; /* Chiều cao là 40px */
+    border-radius: 50%; /* Đường viền tròn để làm nút tròn */
+    background: rgba(0, 0, 0, 0.1); /* Màu nền của nút upload */
+    display: flex; /* Hiển thị các phần tử con dưới dạng flexbox */
+    justify-content: center; /* Canh giữa theo chiều ngang */
+    align-items: center; /* Canh giữa theo chiều dọc */
+    cursor: pointer; /* Thay đổi con trỏ khi hover qua nút */
+}
+
+/* Hiệu ứng hover cho nút upload trong banner */
+.banner-upload-btn:hover {
+    background-color: #ee5253; /* Màu nền thay đổi khi hover qua nút */
+}
+
+/* CSS cho biểu tượng trong nút upload */
+.banner-upload-btn img {
+    width: 20px; /* Chiều rộng của biểu tượng trong nút */
+}
+
+/* CSS cho phần blog (nơi viết blog) */
+.blog {
+    width: 70vw; /* Chiều rộng là 70% của viewport */
+    min-width: 400px; /* Chiều rộng tối thiểu là 400px */
+    height: 100px; /* Chiều cao là 100px */
+    display: block; /* Hiển thị dưới dạng block element */
+    margin: auto; /* Canh giữa theo chiều ngang */
+    padding: 50px 0; /* Khoảng cách lề trên và dưới */
+}
+
+/* CSS cho thanh cuộn trong textarea */
+textarea::-webkit-scrollbar {
+    width: 10px; /* Chiều rộng của thanh cuộn */
+}
+
+/* CSS cho nút kéo trong thanh cuộn */
+textarea::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1); /* Màu nền của nút kéo trong thanh cuộn */
+    border-radius: 10px; /* Đường viền tròn cho nút kéo */
+}
+
+/* CSS cho phần tiêu đề và nội dung bài viết */
+.title,
+.article {
+    width: 100%; /* Chiều rộng 100% */
+    min-height: 100px; /* Chiều cao tối thiểu là 100px */
+    height: auto; /* Chiều cao tự động thay đổi */
+    outline: none; /* Loại bỏ đường viền khi focus */
+    font-size: 50px; /* Kích thước font chữ là 50px */
+    font-weight: 600; /* Độ đậm của font chữ */
+    color: #2d2d2d; /* Màu chữ */
+    resize: none; /* Ngăn chặn việc thay đổi kích thước textarea */
+    border: none; /* Loại bỏ đường viền */
+    padding: 10px; /* Khoảng cách lề bên trong */
+    border-radius: 10px; /* Đường viền tròn */
+}
+
+/* CSS cho placeholder của tiêu đề và nội dung bài viết */
+.title::placeholder,
+.article::placeholder {
+    color: #2d2d2d; /* Màu chữ của placeholder */
+}
+
+/* CSS cho nội dung bài viết */
+.article {
+    height: 800px; /* Chiều cao của nội dung bài viết */
+    font-size: 20px; /* Kích thước font chữ 20px */
+    margin-top: 20px; /* Khoảng cách từ phần tiêu đề */
+    line-height: 30px; /* Độ cao dòng dữ liệu */
+    font-weight: 500; /* Độ đậm của font chữ */
+    padding-bottom: 150px; /* Khoảng cách dưới cùng của nội dung bài viết */
+    white-space: pre-wrap; /* Hiển thị các ký tự xuống dòng */
+}
+
+/* CSS cho phần blog-options (phần chức năng của blog) */
+.blog-options {
+    position: fixed; /* Vị trí cố định để nó luôn nằm ở dưới cùng */
+    bottom: 60px; /* Khoảng cách từ bottom của trang */
+    left: 0; /* Khoảng cách từ left của trang */
+    width: 100%; /* Chiều rộng 100% */
+    height: 60px; /* Chiều cao là 60px */
+    background: #fff; /* Màu nền của phần blog-options */
+    z-index: 9; /* Đảm bảo nằm trên các phần khác */
+    display: flex; /* Hiển thị các phần tử con dưới dạng flexbox */
+    justify-content: center; /* Canh giữa theo chiều ngang */
+    align-items: center; /* Canh giữa theo chiều dọc */
+}
+
+/* CSS cho nút */
+.btn {
+    border: none; /* Loại bỏ đường viền */
+    outline: none; /* Loại bỏ đường viền khi focus */
+    cursor: pointer; /* Thay đổi con trỏ khi hover qua nút */
+}
+
+/* CSS cho nút có màu xám */
+.btn.grey {
+    background: #a5a5a5; /* Màu nền xám */
+    color: #fff; /* Màu chữ là trắng */
+    margin-left: 20px; /* Khoảng cách bên trái */
+    font-size: 14px; /* Kích thước font chữ 14px */
+}
+
+/* Hiệu ứng hover cho nút màu xám */
+.btn.grey:hover {
+    background: #b2bec3;
+    color: #fff;
+}
+
+/* Đảm bảo footer luôn ở dưới cùng của trang */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999; /* Đảm bảo footer hiển thị trên tất cả các phần khác */
+}
+
+/* Đặt z-index cho các phần khác để đảm bảo footer hiển thị trên chúng */
+/* Thay đổi giá trị z-index của các phần khác nếu cần */
+.navbar {
+    z-index: 1000; /* Đặt z-index cao hơn cho navbar */
+}
+
+.blog {
+    z-index: 1; /* Đặt z-index thấp hơn cho phần blog */
+}

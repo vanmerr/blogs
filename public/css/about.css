@@ -1,0 +1,81 @@
+/* Định dạng phần header */
+.header {
+    margin-top: 60px; /* Khoảng cách từ đỉnh trang xuống phần header là 60px */
+    width: 100%; /* Full chiều rộng */
+    height: calc(100vh - 60px); /* Chiều cao bằng chiều cao của viewport trừ đi 60px của thanh điều hướng */
+    background: url(../img/header.png); /* Hình nền là hình ảnh 'header.png' */
+    background-size: cover; /* Hiển thị hình ảnh nền theo tỉ lệ chiều rộng và chiều cao */
+    display: flex; /* Hiển thị thành flex container */
+    justify-content: left; /* Căn trái theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+/* Định dạng nội dung trong phần header */
+.content {
+    text-align: center; /* Căn giữa theo chiều ngang */
+}
+
+/* Định dạng tiêu đề (heading) */
+.heading {
+    color: #292727; /* Màu chữ là trắng */
+    text-transform: capitalize; /* Chuyển đổi chữ hoa thành chữ thường */
+    font-size: 40px; /* Kích thước font là 80px */
+    line-height: 40px; /* Chiều cao dòng là 60px */
+    margin-bottom: 20px; /* Khoảng cách bên dưới tiêu đề là 80px */
+    line-height: 80px;
+}
+
+/* Định dạng phần nhỏ của tiêu đề (small) */
+.heading .small {
+    display: block; /* Hiển thị thành khối (để nó xuống dòng) */
+    font-size: 20px; /* Kích thước font là 40px */
+    overflow: auto; /* Tạo thanh cuộn nếu nội dung tràn ra */
+    max-height: 100%; /* Giới hạn chiều cao của lớp small */
+    line-height: 40px;
+}
+
+.heading .small1 {
+    display: block; /* Hiển thị thành khối (để nó xuống dòng) */
+    font-size: 15px; /* Kích thước font là 15px */
+    overflow: auto; /* Tạo thanh cuộn nếu nội dung tràn ra */
+    max-height: 100%; /* Giới hạn chiều cao của lớp small */
+    line-height: 25px; /* Chiều cao dòng là 60px */
+}
+
+/* Định dạng phần tiêu đề không có nội dung (no-fill) */
+.heading .no-fill {
+    font-style: italic; /* Chữ in nghiêng */
+    color: transparent; /* Màu chữ trong suốt */
+    -webkit-text-stroke: 2px #1a1717; /* Vẽ đường nét màu trắng xung quanh chữ (hiệu ứng viền) */
+}
+
+/* Định dạng khung hình vuông */
+.square-frame {
+    background-color: #ffffff71; /* Màu nền là màu trắng */
+    padding: 40px; /* Khoảng cách padding bên trong khung */
+    height: 50%; /* Chiều cao ban đầu là 0 */
+    padding-bottom: 10%; /* Tỉ lệ padding dưới so với chiều rộng (tạo khung vuông) */
+    padding-top: 10%;
+    padding-right: 5%;
+}
+
+/* Định dạng nội dung trong khung hình */
+.content {
+    text-align: left; /* Căn trái */
+}
+
+.container {
+    margin-left: 5%; /* Cách trái 40px */
+    /* Các thuộc tính khác của lớp container (nếu có) */
+    padding-bottom: 10%; /* Tỉ lệ padding dưới so với chiều rộng (tạo khung vuông) */
+    padding-top: 10%;
+    padding-right: 20%;
+    /* Responsive styles */
+    @media (max-width: 768px) {
+        margin-left: 20px; /* Giảm cách trái xuống còn 20px khi màn hình nhỏ hơn hoặc bằng 768px */
+    }
+
+    @media (max-width: 480px) {
+        margin-left: 10px; /* Giảm cách trái xuống còn 10px khi màn hình nhỏ hơn hoặc bằng 480px */
+    }
+}

@@ -1,0 +1,75 @@
+body{
+    background: #ececec;
+}
+
+.login {
+    width: 300px;
+    margin: 0 auto; /* Canh giữa theo chiều ngang */
+    margin-top: 200px; /* Tự điều chỉnh độ cao yêu cầu, ví dụ 100px */
+    padding: 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login h2 {
+    text-align: center;
+    color: #333;
+}
+
+.login input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login button:hover {
+    background-color: #0056b3;
+}
+
+.heading{
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 60px;
+    text-align: center;
+    position: relative;
+    margin: 100px 0 20px;
+}
+
+/* Định dạng nút màu xám */
+.btn.grey {
+    background: #c5c5c5;
+    color: #000;
+    margin: 0 10px;
+    transition: background 0.3s, color 0.3s; /* Thêm hiệu ứng chuyển đổi màu trong 0.3 giây */
+}
+
+/* Định dạng nút màu đỏ */
+.btn.danger {
+    background: #ee5253;
+    color: #fff;
+    transition: background 0.3s, color 0.3s; /* Thêm hiệu ứng chuyển đổi màu trong 0.3 giây */
+}
+
+/* Hiệu ứng hover cho nút màu xám */
+.btn.grey:hover {
+    background: #b2bec3;
+    color: #fff;
+}
+
+/* Hiệu ứng hover cho nút màu đỏ */
+.btn.danger:hover {
+    background: #c70039;
+}

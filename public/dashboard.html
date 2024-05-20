@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Định nghĩa các thẻ meta -->
+    <meta charset="UTF-8"> <!-- Đặt bộ mã ký tự UTF-8 cho trang -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Cấu hình tương thích với IE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Cấu hình viewport -->
+    <!-- Tiêu đề trang -->
+    <title>Dashboard</title>
+    <!-- Liên kết đến tệp CSS cho FirebaseUI Auth -->
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <!-- Liên kết đến các tệp CSS tùy chỉnh -->
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/dashboard.css">  
+    <!-- Liên kết đến thư viện Font Awesome để sử dụng biểu tượng -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Thanh điều hướng (navbar) -->
+    <nav class="navbar">
+        <!-- Liên kết đến trang chính -->
+        <a href="/">
+            <img src="img/logo.png" class="logo" alt="Logo">
+        </a>
+
+        <!-- Danh sách liên kết -->
+        <ul class="links-container">
+            <li class="link-item"><a href="/" class="link">home</a></li>
+            <li class="link-item"><a href="/editor" class="link">editor</a></li>
+            <li class="link-item"><a href="/about" class="link">about</a></li>
+        </ul>
+    </nav>
+    <!-- Tiêu đề "your blogs" cho bảng điều khiển -->
+    <h1 class="heading">your blogs</h1>   
+    <!-- Phần đăng nhập -->
+    <div class="login">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username" />
+        <input type="password" id="password" placeholder="Password" />
+        <button id="loginButton">Login</button>
+    </div>
+    <!-- Phần hiển thị danh sách các blog -->
+    <section class="blogs-section">
+        <!-- Các thẻ HTML để hiển thị các blog sẽ được thêm vào đây bằng JavaScript -->
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content">
+            <div class="social-icons">
+                <a href="https://www.facebook.com" target="_blank" class="social-link">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.youtube.com" target="_blank" class="social-link">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" class="social-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <!-- Thêm nội dung của footer ở đây -->
+            <p>Blog của tôi</p>
+        </div>
+    </footer>
+    <!-- Nút "Back to Top" -->
+    <button id="back-to-top" style="display: none;">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- Liên kết đến các tệp JavaScript và thư viện -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <script src="js/firebase.js" defer></script>
+    <script src="js/dashboard.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/home.js" defer></script>
+</body>
+</html>
