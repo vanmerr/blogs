@@ -2,7 +2,22 @@ body{
     background: #ececec;
 }
 
-.login {
+.form{
+    position: relative;
+}
+
+#toggleForm {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    cursor: pointer;
+}
+
+#toggleForm:hover{
+    text-decoration: underline;
+    color: blue;
+}
+.login , .register{
     width: 300px;
     margin: 0 auto; /* Canh giữa theo chiều ngang */
     margin-top: 200px; /* Tự điều chỉnh độ cao yêu cầu, ví dụ 100px */
@@ -11,14 +26,20 @@ body{
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    margin-bottom: 5px;
 }
 
-.login h2 {
+.login.active, .register.active{
+    display: block;
+}
+
+.login h2, .register h2 {
     text-align: center;
     color: #333;
 }
 
-.login input {
+.login input, .register input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -26,7 +47,7 @@ body{
     border-radius: 5px;
 }
 
-.login button {
+.login button, .register button {
     width: 100%;
     padding: 10px;
     background-color: #007BFF;
@@ -34,9 +55,11 @@ body{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-bottom: 5px;
 }
 
-.login button:hover {
+
+.login button:hover, .register button:hover {
     background-color: #0056b3;
 }
 

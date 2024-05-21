@@ -33,11 +33,21 @@
     <!-- Tiêu đề "your blogs" cho bảng điều khiển -->
     <h1 class="heading">your blogs</h1>   
     <!-- Phần đăng nhập -->
-    <div class="login">
-        <h2>Login</h2>
-        <input type="text" id="username" placeholder="Username" />
-        <input type="password" id="password" placeholder="Password" />
-        <button id="loginButton">Login</button>
+    <div id="form">
+        <div class="login active">
+            <h2>Login</h2>
+            <input type="text" id="emailLogin" placeholder="Email" />
+            <input type="password" id="passwordLogin" placeholder="Password" />
+            <button id="loginButton">Login</button>
+        </div>
+        <!-- Phần đăng ký -->
+        <div class="register">
+            <h2>Register</h2>
+            <input type="email" id="emailRegister" placeholder="Email" />
+            <input type="password" id="passwordRegister" placeholder="Password" />
+            <button id="registerButton">Register</button>
+        </div>
+        <div id="toggleForm">Tôi chưa có tài khoản? Đăng ký</div>
     </div>
     <!-- Phần hiển thị danh sách các blog -->
     <section class="blogs-section">

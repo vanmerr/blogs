@@ -1,4 +1,5 @@
 
+
 // Khai báo cấu hình Firebase cho dự án của bạn
 const firebaseConfig = {
     apiKey: "AIzaSyCVGZsAZjgmi2MCS_uTeeGvcfytBfyT8j0",
@@ -12,13 +13,16 @@ const firebaseConfig = {
   
 
 // Khởi tạo Firebase với cấu hình dự án
-firebase.initializeApp(firebaseConfig);
+let app = firebase.initializeApp(firebaseConfig);
+
+
 
 // Khởi tạo kết nối tới Firestore
 let db = firebase.firestore();
 
 // Khởi tạo Firebase Authentication
 let auth = firebase.auth();
+
 
 // Hàm đăng xuất người dùng
 const logoutUser = () => {
@@ -28,3 +32,4 @@ const logoutUser = () => {
         console.error("Error logging out:", error);
     });
 }
+

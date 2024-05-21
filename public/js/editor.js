@@ -1,20 +1,35 @@
 // Lấy các phần tử DOM
-const blogTitleField = document.querySelector('.title');
-const articleField = document.querySelector('.article');
 const bannerImage = document.querySelector('#banner-upload');
 const banner = document.querySelector('.banner');
 const publishBtn = document.querySelector('.publish-btn');
 const uploadInput = document.querySelector('#image-upload');
 // Thay thế khu vực văn bản bằng phiên bản CKEditor
-let editor;
-ClassicEditor.create(document.querySelector('#article-editor'))
-    .then(newEditor => {
-        editor = newEditor;
+
+
+// Khởi tạo và thiết lập cho title editor
+let titleEditor = document.querySelector('#title');
+DecoupledEditor.create(titleEditor)
+    .then(editor => {
+        const toolbarContainer = document.querySelector('#title-toolbar-container');
+        titleEditor = editor;
+        toolbarContainer.appendChild(titleEditor.ui.view.toolbar.element);
     })
     .catch(error => {
         console.error(error);
     });
-    
+
+// Khởi tạo và thiết lập cho article editor
+let articleEditor =document.querySelector('#article');
+DecoupledEditor.create(articleEditor)
+    .then(editor => {
+        const toolbarContainer = document.querySelector('#article-toolbar-container');
+        articleEditor = editor;
+        toolbarContainer.appendChild(articleEditor.ui.view.toolbar.element);
+    })
+    .catch(error => {
+        console.error(error);
+    });
+
 // Biến lưu đường dẫn banner
 let bannerPath;
 
@@ -62,7 +77,7 @@ const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 
 // Xử lý sự kiện nút Publish
 publishBtn.addEventListener('click', () => {
-    if (articleField.value.length && blogTitleField.value.length) {
+    if (titleEditor.getData().length && articleEditor.getData().length) {
         if (!bannerPath) {
             alert('Bạn cần phải upload ảnh banner!');
             return;
@@ -71,13 +86,12 @@ publishBtn.addEventListener('click', () => {
         let docName;
         if (blogID[0] === 'editor') {
             // Tạo ID ngẫu nhiên nếu trong trình soạn thảo
-            const letters = 'abcdefghijklmnopqrstuvwxyz';
-            const blogTitle = blogTitleField.value.split(' ').join('-');
+            const letters = 'qwertyuiopasdfghjklzxcvbnm';
             let id = '';
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 5; i++) {
                 id += letters[Math.floor(Math.random() * letters.length)];
             }
-            docName = `${blogTitle}-${id}`;
+            docName = `blog-${id}-${auth.currentUser.uid}`;
         } else {
             docName = decodeURI(blogID[0]);
         }
@@ -86,8 +100,8 @@ publishBtn.addEventListener('click', () => {
 
         // Truy cập Firestore với db
         const blogData = {
-            title: blogTitleField.value,
-            article: articleField.value,
+            title: titleEditor.getData().toString(),
+            article: articleEditor.getData().toString(),
             bannerImage: bannerPath,
             publishedAt: `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`,
             author: auth.currentUser.email,
@@ -127,8 +141,8 @@ if (blogID[0] !== 'editor') {
             const data = doc.data();
             bannerPath = data.bannerImage;
             banner.style.backgroundImage = `url(${bannerPath})`;
-            blogTitleField.value = data.title;
-            articleField.value = data.article;
+            titleEditor.setData(data.title);
+            articleEditor.setData(data.article);
         } else {
             location.replace('/');
         }

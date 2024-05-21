@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/editor.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/decoupled-document/ckeditor.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -28,11 +28,14 @@
         </label>
     </div>
     
-    <div class="blog">
-        <textarea type="text" class="title" placeholder="Blog title..."></textarea>
-        <textarea type="text" class="article" placeholder="Start writing here..."></textarea>
-    </div>
-    <div id="article-editor"></div>
+    
+    
+    <div id="title-toolbar-container"></div>
+    <div id="title" class="title">Blog title...</div>
+    <div id="article-toolbar-container"></div>
+    <div id="article" class="article">Start writing here...</div>
+    
+    <!-- This container will become the editable. -->
 
     <div class="blog-options">
         <button class="btn dark publish-btn">publish</button>
@@ -65,6 +68,5 @@
     <script src="../js/firebase.js" defer></script>
     <script src="../js/editor.js" defer></script>
     <script src="../js/nav.js" defer></script>
-    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 </body>
 </html>

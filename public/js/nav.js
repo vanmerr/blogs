@@ -11,7 +11,7 @@ auth.onAuthStateChanged((user) => {
     } else{
         // no one is logged in
         ul.innerHTML += `
-        <li class="link-item"><a href="/admin" class="link">login</a></li>
+        <li class="link-item"><a href="/admin" class="link">Tài khoản</a></li>
         `
     }
 })

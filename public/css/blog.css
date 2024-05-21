@@ -51,6 +51,10 @@
     display: none;
 }
 
+.blogs-section {
+    margin-bottom: 50px;
+}
+
 /* Định dạng phần footer */
 .footer {
     background-color: #fff; /* Màu nền là màu trắng */
